@@ -39,11 +39,14 @@ One can create the standard (equal temperament) system by calling ~MusicalSystem
 #+RESULTS[a8aeca8f48f45e35d2d1dfe40e8c58b140c7a436]:
 : MusicalSystem(rho=(0,1,2,3,4,5,6,7,8,9,10,11), phi=(1,11)(2,10)(3,9)(4,8)(5,7)): Musical System given by rotation (0,1,2,3,4,5,6,7,8,9,10,11) and reflection (1,11)(2,10)(3,9)(4,8)(5,7)
 
-To create a new system, let's first create the symmetric group on $\mathbb{Z}$ modulo $12$ (or the set $\{0, 1, 2, 3, \ldots, 11\}$) in Sage:
+To create a new system, let's first create the symmetric group on integers modulo 12 (or the set {0, 1, 2, 3, ... , 11}) in Sage:
 
 #+begin_src sage :results none
   S12 = SymmetricGroup(range(12))
 #+end_src
+
+*IMPORTANT:* Note that Sage, like some group theorists, compose functions from left to right, instead of the usual right to left used in all mathematics.  So, for Sage, ~(sigma * tau)(x)~ means ~tau(sigma(x))~, and not the usual ~sigma(tau(x))~.  On the other hand, //I will always refer to composition the usual way/, i.e., from right to left.
+
 
 Let's also create the standard rotation/transposition and reflection/inversion:
 
@@ -61,7 +64,7 @@ SMS.rho == rho, SMS.phi == phi
 #+RESULTS[119522fcc463558dbb3557e20357bfbdd86e694f]:
 : (True, True)
 
-Let's create a new system (the system denote by $H_1$ in FIXME), given by the rotation $\rho_1 = (0,4,11,3,7,2,6,10,5,9,1,8)$:
+Let's create a new system given by the rotation ~(0, 4, 11, 3, 7, 2, 6, 10, 5, 9, 1, 8)~:
 
 #+begin_src sage
   rho1 = S12([(0, 4, 11, 3, 7, 2, 6, 10, 5, 9, 1, 8)])
@@ -84,7 +87,7 @@ As observed in the paper, every new system can be given by a conjugation of the 
 #+RESULTS[38021a85b46520ba72846fa8603f2152e3ccc68b]:
 : MusicalSystem(rho=(0,10,4,1,8,5,11,2,3,9,6,7), phi=(1,9)(2,5)(3,8)(4,6)(7,10)): Musical System given by rotation (0,10,4,1,8,5,11,2,3,9,6,7) and reflection (1,9)(2,5)(3,8)(4,6)(7,10)
 
-This is the system denoted by $H_2$ in FIXME.  Let's save the corresponding rotation and reflection:
+Let's save the corresponding rotation and reflection:
 
 #+begin_src sage :results none
   rho2, phi2 = MS2.rho, MS2.phi
@@ -148,7 +151,7 @@ We can also find what are the symmetries of a pitch class set for each system:
 #+RESULTS[8e2ab5ea31a34ffa7597c16084ba76ba1c580968]:
 : [(0, 0), (4, 0), (8, 0), (0, 1), (4, 1), (8, 1)]
 
-The output tells us that the pitch class set $[0, 4, 8]$ is mapped onto itself by $\rho^0 \phi^0$ (the identity), $\rho^4 \phi^0 = \rho^4$, $\rho^8 \phi^0 = \rho^8$, $\rho^0 \phi^1 = \phi$, $\rho^4 \phi^1 = \rho^4 \phi$, and $\rho^8 \phi^1 = \rho^8 \phi$.
+The output tells us that the pitch class set ~[0, 4, 8]~ is mapped onto itself by ~rho^0 * phi^0~ (the identity), ~rho^4 * phi^0 = \rho^4~, ~rho^8 phi^0 = rho^8~, ~rho^0  * phi^1 = \phi~, ~rho^4 * phi^1 = rho^4 * phi~, and ~rho^8 * phi^1 = rho^8  * phi~.
 
 Let's check if this same set has any symmetries in the other systems:
 
@@ -159,7 +162,7 @@ Let's check if this same set has any symmetries in the other systems:
 #+RESULTS[d1f6d895687bf0b37272de3ea760bca431a2510e]:
 : [(0, 0), (0, 1)]
 
-So, in the systems ~MS1~, only the identity and $\phi_1$ preserve the set.
+So, in the systems ~MS1~, only the identity and ~phi1~ preserve the set.
 
 #+begin_src sage
   MS2.symmetries(pc_set)
@@ -168,7 +171,7 @@ So, in the systems ~MS1~, only the identity and $\phi_1$ preserve the set.
 #+RESULTS[39021015761e06b60890db775aed4cae041986e5]:
 : [(0, 0), (4, 1)]
 
-In the system ~MS2~, only the identity and $\rho_2^4 \phi_2$ preserve the set.
+In the system ~MS2~, only the identity and ~rho_2^4 * phi_2~ preserve the set.
 
 We can also compute class sums of pitch class sets in any system:
 
@@ -240,7 +243,7 @@ We also have the corresponding method ~.vphi~ for the reflection:
 #+RESULTS[636b80b7329dbb0588bb14d02cf585e0e83bfde8]:
 : ([11, 10, 6], [11, 10, 6], [9, 5, 4])
 
-(Remember that $\phi_1 = \phi$.)
+(Remember that ~phi_1 = phi~.)
 
 To mix those, we can call ~.vmap~.  The first argument is the power of the rotation and the second is the power of the reflection, while the third is the pitch class set.  Note that the power of the reflection is computed *first* and the power of the rotation *second*.  It has the same sorting options as ~.vhro~ and ~.vphi~:
 
@@ -265,7 +268,7 @@ system maps one to the other:
 #+RESULTS:
 : [(7, 1)]
 
-This means that $\rho_2^7 \phi_2$ maps ~[0, 3, 5]~ to ~[2, 4, 7]~ in the system ~MS2~:
+This means that ~rho2^7 * phi2~ maps ~[0, 3, 5]~ to ~[2, 4, 7]~ in the system ~MS2~:
 
 #+begin_src sage
 MS2.vmap(7, 1, pc1)
@@ -862,7 +865,7 @@ We can see that the trichords are indeed related by symmetry, by asking what are
 #+RESULTS:
 : ([(1, 1)], [(2, 0)])
 
-This means that $\rho_2 \phi_2$ maps ~[3, 8, 10]~ to ~[0, 5, 9]~ and $\rho_2^2$ maps ~[0, 5, 9]~ to ~[2, 4, 7]~.
+This means that ~rho_2 * phi2~ maps ~[3, 8, 10]~ to ~[0, 5, 9]~ and ~rho2^2~ maps ~[0, 5, 9]~ to ~[2, 4, 7]~.
 
 We can see if this first row has hexachords that are also related by symmetries:
 
@@ -903,7 +906,7 @@ So, now we can use this first row to create a Webern matrix in this system.  We 
     |   8   5   1   7  10   3  11   6   2   9   4   0  |
 #+end_example
 
-To print in LaTeX, we can also give the names to the maps.  In this case, we can use $\rho_2$ and $\phi_2$:
+To print in LaTeX, we can also give the names to the maps.  In this case, we can use ~rho2~ and ~phi2~:
 
 #+begin_src sage
   print(wm2.latex('\\rho_2', '\\phi_2'))
@@ -930,3 +933,5 @@ To print in LaTeX, we can also give the names to the maps.  In this case, we can
      &  $\rho_2^{8} \phi_2$ &  $\rho_2^{5} \phi_2$ &  $\rho_2 \phi_2$ &  $\rho_2^{7} \phi_2$ &  $\rho_2^{10} \phi_2$ &  $\rho_2^{3} \phi_2$ &  $\rho_2^{11} \phi_2$ &  $\rho_2^{6} \phi_2$ &  $\rho_2^{2} \phi_2$ &  $\rho_2^{9} \phi_2$ &  $\rho_2^{4} \phi_2$ &  $\phi_2$ &
 \end{tabular}
 #+end_example
+
+Note that we need the double ~\~ for the LaTeX names, as in ~'\\rho_2~.
