@@ -1,19 +1,19 @@
-- [Musical Systems](#org807894a)
-  - [Introduction](#org44f8a83)
-  - [Musical Systems](#org2c74f98)
-  - [Set Classes](#orgfc36db9)
-  - [Forte Table](#org01c79c7)
-  - [Class Elements](#org8ab2617)
-  - [Webern Matrices](#org8df17ce)
+- [Musical Systems](#orga840bc2)
+  - [Introduction](#org1f18c23)
+  - [Musical Systems](#orgee94f9d)
+  - [Set Classes](#org2c71ef0)
+  - [Forte Table](#orgdfcf1f5)
+  - [Class Elements](#org61ebdd5)
+  - [Webern Matrices](#orga74d7c9)
 
 
 
-<a id="org807894a"></a>
+<a id="orga840bc2"></a>
 
 # Musical Systems
 
 
-<a id="org44f8a83"></a>
+<a id="org1f18c23"></a>
 
 ## Introduction
 
@@ -34,7 +34,7 @@ The file `MusicalSystem.sage` provides all necessary routines. It provides five 
 We describe the functionality of each below.
 
 
-<a id="org2c74f98"></a>
+<a id="orgee94f9d"></a>
 
 ## Musical Systems
 
@@ -274,7 +274,7 @@ MS2.symmetry_maps(pc1, pc2)
 
     [(7, 1)]
 
-This means that `rho2^7 * phi2` (ordering the *usual way* again, composing from right to left) maps `[0, 3, 5]` to `[2, 4, 7]` in the system `MS2`:
+This means that `rho2^7 * phi2` (composing the permutations the *usual way* again, from right to left) maps `[0, 3, 5]` to `[2, 4, 7]` in the system `MS2`:
 
 ```sage
 MS2.vmap(7, 1, pc1)
@@ -282,10 +282,10 @@ MS2.vmap(7, 1, pc1)
 
     [2, 7, 4]
 
-(Note that order does not matter.)
+(Note that order of the elements in the set does not matter.)
 
 
-<a id="orgfc36db9"></a>
+<a id="org2c71ef0"></a>
 
 ## Set Classes
 
@@ -429,7 +429,7 @@ sc1.MusicalSystem
     MusicalSystem(rho=(0,4,11,3,7,2,6,10,5,9,1,8), phi=(1,11)(2,10)(3,9)(4,8)(5,7)): Musical System given by rotation (0,4,11,3,7,2,6,10,5,9,1,8) and reflection (1,11)(2,10)(3,9)(4,8)(5,7)
 
 
-<a id="org01c79c7"></a>
+<a id="orgdfcf1f5"></a>
 
 ## Forte Table
 
@@ -535,13 +535,13 @@ print(ft2.latex())
     \end{tabular}
 
 
-<a id="org8ab2617"></a>
+<a id="org61ebdd5"></a>
 
 ## Class Elements
 
 We can also print all set classes while listing every element in each set class. (Long output!)
 
-For instance, let's look at out set classes of size four and their elements in the traditional system:
+For instance, let's look at out set classes of size four and their elements in the standard system:
 
 ```sage
 ce = ClassElements(4)
@@ -550,7 +550,7 @@ print(ce)
 
 The output is too long to be displayed here, but it gives a series of columns, with the prime form of the set class on top, and the elements in the class below it.
 
-We can also break the result in smaller number of colums:
+We can also break the result in smaller number of columns:
 
 ```sage
 ce.print_col(ncol=6)
@@ -558,8 +558,53 @@ ce.print_col(ncol=6)
 
 Again, the output is too long, but is it more suitable for printing.
 
+We can produce a class in other system by specifying the system with the optional argument `MS`, as in, for instance, `ClassElements(3, MS=MS1)`. But, this can also be created from the system itself using `.class_ements`:
 
-<a id="org8df17ce"></a>
+```sage
+ce1 = MS1.class_elements(3)
+```
+
+You can access the internal data with `.matrix`. For instance, the following takes the 4th column of the `ce1`, which contains the elements in some set class, with the prime form on top:
+
+```sage
+(ce1.matrix)[3]
+```
+
+    [(0, 11, 7),
+     (1, 0, 11),
+     (2, 10, 9),
+     (3, 2, 10),
+     (4, 3, 2),
+     (5, 1, 0),
+     (6, 5, 1),
+     (7, 6, 5),
+     (8, 4, 3),
+     (9, 8, 4),
+     (10, 9, 8),
+     (11, 7, 6)]
+
+As usual, the results are in normal form. Also, we can see now many different set classes of size 3 we have in the system `MS1`:
+
+```sage
+len(ce1.matrix)
+```
+
+    12
+
+There are 12 different set classes.
+
+We can also see what is the variation of number of elements in the set classes:
+
+```sage
+min(len(sc) for sc in ce1.matrix), max(len(sc) for sc in ce1.matrix)
+```
+
+    (4, 24)
+
+The number of elements varies from 4 to 24.
+
+
+<a id="orga74d7c9"></a>
 
 ## Webern Matrices
 
