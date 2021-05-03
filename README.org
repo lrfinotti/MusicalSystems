@@ -8,7 +8,7 @@
 
 ** Introduction
 
-We provide here the routines to work with new musical systems as described in FIXME.  But even if one is only interested in working with the standard system, the routines provide some tools for dealing with common music theory elements.
+We provide here the routines to work with new musical systems as described in the paper [[https://web.math.utk.edu/~finotti/papers/mussys.pdf][Alternative Symmetries and Systems]].  But even if one is only interested in working with the standard system, the routines provide some tools for dealing with common music theory elements.
 
 Note that these routines run in [[https://www.sagemath.org/][Sage]], not straight [[https://www.python.org/][Python]], as it makes it easier to deal with permutation and groups.
 
@@ -680,7 +680,7 @@ We can also construct Webern matrices.  To see the original matrix, we can do:
     |   2   1   5   6  10   9  11   7   8   3   4   0  |
 #+end_example
 
-The numbers on the left are the powers of the rotation that take the first row into the corresponding row.  The numbers on top are the powers of the rotation that when composed with the reflection take the first row into the corresponding /column/.  The right numbers and bottom numbers are similar, but with the /retrogrades/.  See FIXME.
+The numbers on the left are the powers of the rotation that take the first row into the corresponding row.  The numbers on top are the powers of the rotation that when composed with the reflection take the first row into the corresponding /column/.  The right numbers and bottom numbers are similar, but with the /retrogrades/.  See the Section 3 of [[https://web.math.utk.edu/~finotti/papers/mussys.pdf][Alternative Symmetries and Systems]] for more details.
 
 We can also get the whole matrix (without the labels) with ~.matrix~:
 

@@ -1,23 +1,23 @@
-- [Musical Systems](#orga840bc2)
-  - [Introduction](#org1f18c23)
-  - [Musical Systems](#orgee94f9d)
-  - [Set Classes](#org2c71ef0)
-  - [Forte Table](#orgdfcf1f5)
-  - [Class Elements](#org61ebdd5)
-  - [Webern Matrices](#orga74d7c9)
+- [Musical Systems](#org58beec9)
+  - [Introduction](#orgbf6e928)
+  - [Musical Systems](#org1bcc756)
+  - [Set Classes](#org753b4ac)
+  - [Forte Table](#org5d4241a)
+  - [Class Elements](#org5d5d7c0)
+  - [Webern Matrices](#org50b8203)
 
 
 
-<a id="orga840bc2"></a>
+<a id="org58beec9"></a>
 
 # Musical Systems
 
 
-<a id="org1f18c23"></a>
+<a id="orgbf6e928"></a>
 
 ## Introduction
 
-We provide here the routines to work with new musical systems as described in FIXME. But even if one is only interested in working with the standard system, the routines provide some tools for dealing with common music theory elements.
+We provide here the routines to work with new musical systems as described in the paper [Alternative Symmetries and Systems](https://web.math.utk.edu/~finotti/papers/mussys.pdf). But even if one is only interested in working with the standard system, the routines provide some tools for dealing with common music theory elements.
 
 Note that these routines run in [Sage](https://www.sagemath.org/), not straight [Python](https://www.python.org/), as it makes it easier to deal with permutation and groups.
 
@@ -34,7 +34,7 @@ The file `MusicalSystem.sage` provides all necessary routines. It provides five 
 We describe the functionality of each below.
 
 
-<a id="orgee94f9d"></a>
+<a id="org1bcc756"></a>
 
 ## Musical Systems
 
@@ -285,7 +285,7 @@ MS2.vmap(7, 1, pc1)
 (Note that order of the elements in the set does not matter.)
 
 
-<a id="org2c71ef0"></a>
+<a id="org753b4ac"></a>
 
 ## Set Classes
 
@@ -429,7 +429,7 @@ sc1.MusicalSystem
     MusicalSystem(rho=(0,4,11,3,7,2,6,10,5,9,1,8), phi=(1,11)(2,10)(3,9)(4,8)(5,7)): Musical System given by rotation (0,4,11,3,7,2,6,10,5,9,1,8) and reflection (1,11)(2,10)(3,9)(4,8)(5,7)
 
 
-<a id="orgdfcf1f5"></a>
+<a id="org5d4241a"></a>
 
 ## Forte Table
 
@@ -535,7 +535,7 @@ print(ft2.latex())
     \end{tabular}
 
 
-<a id="org61ebdd5"></a>
+<a id="org5d5d7c0"></a>
 
 ## Class Elements
 
@@ -604,7 +604,7 @@ min(len(sc) for sc in ce1.matrix), max(len(sc) for sc in ce1.matrix)
 The number of elements varies from 4 to 24.
 
 
-<a id="orga74d7c9"></a>
+<a id="org50b8203"></a>
 
 ## Webern Matrices
 
@@ -632,7 +632,7 @@ print(wm)
     ----|--------------------------------------------------|----
         |   2   1   5   6  10   9  11   7   8   3   4   0  |
 
-The numbers on the left are the powers of the rotation that take the first row into the corresponding row. The numbers on top are the powers of the rotation that when composed with the reflection take the first row into the corresponding *column*. The right numbers and bottom numbers are similar, but with the *retrogrades*. See FIXME.
+The numbers on the left are the powers of the rotation that take the first row into the corresponding row. The numbers on top are the powers of the rotation that when composed with the reflection take the first row into the corresponding *column*. The right numbers and bottom numbers are similar, but with the *retrogrades*. See the Section 3 of [Alternative Symmetries and Systems](https://web.math.utk.edu/~finotti/papers/mussys.pdf) for more details.
 
 We can also get the whole matrix (without the labels) with `.matrix`:
 
