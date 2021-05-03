@@ -452,6 +452,11 @@ class MusicalSystem:
         '''
         return WebernMatrix(v0, MS=self)
 
+    def class_elements(self, n):
+        '''
+        Creates the class elements list for n-chords in the system.
+        '''
+        return ClassElements(n, MS=self)
 
 
 class WebernMatrix:

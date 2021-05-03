@@ -292,7 +292,7 @@ system maps one to the other:
 #+RESULTS[eef3262ec72c2ec306f959dbca094be332a85f2a]:
 : [(7, 1)]
 
-This means that ~rho2^7 * phi2~ (ordering the /usual way/ again, composing from right to left) maps ~[0, 3, 5]~ to ~[2, 4, 7]~ in the system ~MS2~:
+This means that ~rho2^7 * phi2~ (composing the permutations the /usual way/ again, from right to left) maps ~[0, 3, 5]~ to ~[2, 4, 7]~ in the system ~MS2~:
 
 #+begin_src sage
 MS2.vmap(7, 1, pc1)
@@ -301,7 +301,7 @@ MS2.vmap(7, 1, pc1)
 #+RESULTS:
 : [2, 7, 4]
 
-(Note that order does not matter.)
+(Note that order of the elements in the set does not matter.)
 
 
 
@@ -582,7 +582,7 @@ We can also ask for the output in LaTeX:
 
 We can also print all set classes while listing every element in each set class.  (Long output!)
 
-For instance, let's look at out set classes of size four and their elements in the traditional system:
+For instance, let's look at out set classes of size four and their elements in the standard system:
 
 #+begin_src sage :results none
   ce = ClassElements(4)
@@ -591,13 +591,64 @@ For instance, let's look at out set classes of size four and their elements in t
 
 The output is too long to be displayed here, but it gives a series of columns, with the prime form of the set class on top, and the elements in the class below it.
 
-We can also break the result in smaller number of colums:
+We can also break the result in smaller number of columns:
 
 #+begin_src sage :results none
   ce.print_col(ncol=6)
 #+end_src
 
 Again, the output is too long, but is it more suitable for printing.
+
+We can produce a class in other system by specifying the system with the optional argument ~MS~, as in, for instance, ~ClassElements(3, MS=MS1)~.  But, this can also be created from the system itself using ~.class_ements~:
+
+#+begin_src sage :results none
+  ce1 = MS1.class_elements(3)
+#+end_src
+
+You can access the internal data with ~.matrix~.  For instance, the following takes the 4th column of the ~ce1~, which contains the elements in some set class, with the prime form on top:
+
+#+begin_src sage 
+  (ce1.matrix)[3]
+#+end_src
+
+#+RESULTS:
+#+begin_example
+[(0, 11, 7),
+ (1, 0, 11),
+ (2, 10, 9),
+ (3, 2, 10),
+ (4, 3, 2),
+ (5, 1, 0),
+ (6, 5, 1),
+ (7, 6, 5),
+ (8, 4, 3),
+ (9, 8, 4),
+ (10, 9, 8),
+ (11, 7, 6)]
+#+end_example
+
+As usual, the results are in normal form.  Also, we can see now many different set classes of size 3 we have in the system ~MS1~:
+
+#+begin_src sage 
+  len(ce1.matrix)
+#+end_src
+
+#+RESULTS:
+: 12
+
+There are 12 different set classes.
+
+We can also see what is the variation of number of elements in the set classes:
+
+#+begin_src sage 
+  min(len(sc) for sc in ce1.matrix), max(len(sc) for sc in ce1.matrix)
+#+end_src
+
+#+RESULTS:
+: (4, 24)
+
+The number of elements varies from 4 to 24.
+
 
 
 ** Webern Matrices
