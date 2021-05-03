@@ -433,6 +433,24 @@ class MusicalSystem:
 
         return [ map(x) for x in v ]
 
+    def set_class(self, v):
+        '''
+        Creates the set class given by the pitch class set v for
+        the system.
+        '''
+        return SetClass(v, MS=self)
+
+    def forte_table(self, n):
+        '''
+        Creates the Forte Table for n-chords in the system.
+        '''
+        return ForteTable(n, MS=self)
+
+    def webern_matrix(self, v0):
+        '''
+        Crteates the WebernMatrix with first row v0 in the system.
+        '''
+        return WebernMatrix(v0, MS=self)
 
 
 
