@@ -1,19 +1,19 @@
-- [Musical Systems](#orgb5baddb)
-  - [Introduction](#org65d6804)
-  - [Musical Systems](#orgbc4353c)
-  - [Set Classes](#orgcd8b6a6)
-  - [Forte Table](#orge8fbd2f)
-  - [Class Elements](#orgfcf0d05)
-  - [Webern Matrices](#orgf7b9c24)
+- [Musical Systems](#org33f07a2)
+  - [Introduction](#org72a22b7)
+  - [Musical Systems](#org837915f)
+  - [Set Classes](#org83c3e3d)
+  - [Forte Table](#orgf617561)
+  - [Class Elements](#org651d3bc)
+  - [Webern Matrices](#org9a2d8b2)
 
 
 
-<a id="orgb5baddb"></a>
+<a id="org33f07a2"></a>
 
 # Musical Systems
 
 
-<a id="org65d6804"></a>
+<a id="org72a22b7"></a>
 
 ## Introduction
 
@@ -34,7 +34,7 @@ The file `MusicalSystem.sage` provides all necessary routines. It provides five 
 We describe the functionality of each below.
 
 
-<a id="orgbc4353c"></a>
+<a id="org837915f"></a>
 
 ## Musical Systems
 
@@ -285,7 +285,7 @@ MS2.vmap(7, 1, pc1)
 (Note that order of the elements in the set does not matter.)
 
 
-<a id="orgcd8b6a6"></a>
+<a id="org83c3e3d"></a>
 
 ## Set Classes
 
@@ -429,7 +429,7 @@ sc1.MusicalSystem
     MusicalSystem(rho=(0,4,11,3,7,2,6,10,5,9,1,8), phi=(1,11)(2,10)(3,9)(4,8)(5,7)): Musical System given by rotation (0,4,11,3,7,2,6,10,5,9,1,8) and reflection (1,11)(2,10)(3,9)(4,8)(5,7)
 
 
-<a id="orge8fbd2f"></a>
+<a id="orgf617561"></a>
 
 ## Forte Table
 
@@ -535,7 +535,7 @@ print(ft2.latex())
     \end{tabular}
 
 
-<a id="orgfcf0d05"></a>
+<a id="org651d3bc"></a>
 
 ## Class Elements
 
@@ -556,7 +556,7 @@ We can also break the result in smaller number of columns:
 ce.print_col(ncol=6)
 ```
 
-Again, the output is too long, but is it more suitable for printing.
+Again, the output is too long, but is it more suitable for printing. In the case above, it prints by breaking the output in sets of six columns.
 
 We can produce a class in other system by specifying the system with the optional argument `MS`, as in, for instance, `ClassElements(3, MS=MS1)`. But, this can also be created from the system itself using `.class_ements`:
 
@@ -604,7 +604,7 @@ min(len(sc) for sc in ce1.matrix), max(len(sc) for sc in ce1.matrix)
 The number of elements varies from 4 to 24.
 
 
-<a id="orgf7b9c24"></a>
+<a id="org9a2d8b2"></a>
 
 ## Webern Matrices
 
@@ -801,7 +801,7 @@ print(wm2)
 To print in LaTeX, we can also give the names to the maps. In this case, we can use `rho2` and `phi2`:
 
 ```sage
-print(wm2.latex('\\rho_2', '\\phi_2'))
+print(wm2.latex(srho='\\rho_2', sphi='\\phi_2'))
 ```
 
     \begin{tabular}{c|cccccccccccc|c}

@@ -598,6 +598,7 @@ We can also break the result in smaller number of columns:
 #+end_src
 
 Again, the output is too long, but is it more suitable for printing.
+In the case above, it prints by breaking the output in sets of six columns.
 
 We can produce a class in other system by specifying the system with the optional argument ~MS~, as in, for instance, ~ClassElements(3, MS=MS1)~.  But, this can also be created from the system itself using ~.class_ements~:
 
@@ -868,7 +869,7 @@ So, now we can use this first row to create a Webern matrix in this system.  We 
 To print in LaTeX, we can also give the names to the maps.  In this case, we can use ~rho2~ and ~phi2~:
 
 #+begin_src sage
-  print(wm2.latex('\\rho_2', '\\phi_2'))
+  print(wm2.latex(srho='\\rho_2', sphi='\\phi_2'))
 #+end_src
 
 #+RESULTS:
