@@ -681,7 +681,7 @@ class SetClass:
         # return str(self.vec)
         return print_prime_form(self.prime_form)
 
-    def int_vector(self):
+    def interval_vector(self):
         '''
         Returns the interval class vector with respect to rhoh.
         '''
@@ -798,8 +798,8 @@ class ForteTable:
         for v in chords:
             sc = SetClass(v, MS)
             scc = sc.complement()
-            isc = sc.int_vector()
-            iscc = scc.int_vector()
+            isc = sc.interval_vector()
+            iscc = scc.interval_vector()
             s = sc.nsym()
             res.append([sc.vec, isc, s, iscc, scc.vec])
 

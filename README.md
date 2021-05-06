@@ -1,19 +1,19 @@
-- [Musical Systems](#org33f07a2)
-  - [Introduction](#org72a22b7)
-  - [Musical Systems](#org837915f)
-  - [Set Classes](#org83c3e3d)
-  - [Forte Table](#orgf617561)
-  - [Class Elements](#org651d3bc)
-  - [Webern Matrices](#org9a2d8b2)
+- [Musical Systems](#org06a1cec)
+  - [Introduction](#org1c1fa9d)
+  - [Musical Systems](#org4722bc4)
+  - [Set Classes](#org939a8e3)
+  - [Forte Table](#org7e4cdbb)
+  - [Class Elements](#orgc78dc30)
+  - [Webern Matrices](#org58b0278)
 
 
 
-<a id="org33f07a2"></a>
+<a id="org06a1cec"></a>
 
 # Musical Systems
 
 
-<a id="org72a22b7"></a>
+<a id="org1c1fa9d"></a>
 
 ## Introduction
 
@@ -34,7 +34,7 @@ The file `MusicalSystem.sage` provides all necessary routines. It provides five 
 We describe the functionality of each below.
 
 
-<a id="org837915f"></a>
+<a id="org4722bc4"></a>
 
 ## Musical Systems
 
@@ -285,7 +285,7 @@ MS2.vmap(7, 1, pc1)
 (Note that order of the elements in the set does not matter.)
 
 
-<a id="org83c3e3d"></a>
+<a id="org939a8e3"></a>
 
 ## Set Classes
 
@@ -335,6 +335,14 @@ sc2, sc2.complement()
 
     (SetClass([0, 4, 8]), with rho = (0,10,4,1,8,5,11,2,3,9,6,7), phi = (1,9)(2,5)(3,8)(4,6)(7,10).  Prime form: (048),
      SetClass([1, 2, 3, 5, 6, 7, 9, 10, 11]), with rho = (0,10,4,1,8,5,11,2,3,9,6,7), phi = (1,9)(2,5)(3,8)(4,6)(7,10).  Prime form: (0t4185e36))
+
+We can ask for the interval vectors as well:
+
+```sage
+sc.interval_vector(), sc1.interval_vector(), sc2.interval_vector()
+```
+
+    ([0, 0, 0, 3, 0, 0], [2, 1, 0, 0, 0, 0], [0, 2, 0, 1, 0, 0])
 
 And we can ask for class sums:
 
@@ -429,7 +437,7 @@ sc1.MusicalSystem
     MusicalSystem(rho=(0,4,11,3,7,2,6,10,5,9,1,8), phi=(1,11)(2,10)(3,9)(4,8)(5,7)): Musical System given by rotation (0,4,11,3,7,2,6,10,5,9,1,8) and reflection (1,11)(2,10)(3,9)(4,8)(5,7)
 
 
-<a id="orgf617561"></a>
+<a id="org7e4cdbb"></a>
 
 ## Forte Table
 
@@ -535,7 +543,7 @@ print(ft2.latex())
     \end{tabular}
 
 
-<a id="org651d3bc"></a>
+<a id="orgc78dc30"></a>
 
 ## Class Elements
 
@@ -604,7 +612,7 @@ min(len(sc) for sc in ce1.matrix), max(len(sc) for sc in ce1.matrix)
 The number of elements varies from 4 to 24.
 
 
-<a id="org9a2d8b2"></a>
+<a id="org58b0278"></a>
 
 ## Webern Matrices
 
