@@ -17,7 +17,7 @@
 
 ## Introduction
 
-We provide here the routines to work with new musical systems as described in the paper [Alternative Symmetries and Systems](https://web.math.utk.edu/~finotti/papers/mussys.pdf). But even if one is only interested in working with the standard system, the routines provide some tools for dealing with common music theory elements.
+We provide here the routines to work with new musical systems as described in the paper [Alternative Symmetries and Systems](). But even if one is only interested in working with the standard system, the routines provide some tools for dealing with common music theory elements.
 
 Note that these routines run in [Sage](https://www.sagemath.org/), not straight [Python](https://www.python.org/), as it makes it easier to deal with permutation and groups.
 
