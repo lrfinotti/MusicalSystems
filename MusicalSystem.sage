@@ -91,7 +91,7 @@ class MusicalSystem:
         # check if Dihedral
         if not (self.group).is_isomorphic(DihedralGroup(12)):
             raise ValueError(
-                'Given permuations do not give Dihedral Group of order 24.')
+                'Given permutations do not give Dihedral Group of order 24.')
 
         # is rho a 12-cycle?
         self.is_transitive = (len(self.rho.orbit(0)) == 12)
@@ -111,7 +111,7 @@ class MusicalSystem:
     @classmethod
     def from_conj(cls, sigma):
         '''
-        Creates a MusicalSystem from conjugation.  Given a permutaiton
+        Creates a MusicalSystem from conjugation.  Given a permutation
         sigma is S12, creates the system with group sigma*D12*sigma^(-1).
         '''
         S12 = SymmetricGroup(range(12))
@@ -190,14 +190,14 @@ class MusicalSystem:
                 return v
             if self.sveckey(x) > self.sveckey(y):
                 return w
-            return None  # something went worng if here
+            return None  # something went wrong if here
 
     def sort_vec(self, v):
         '''
         Sort a vector according to self.intvec.
 
         First, it start with 0.  For the next element, we use the
-        one which needs the least applitcations of rho to get to the
+        one which needs the least applications of rho to get to the
         next.
 
         If rhoh = rho = (0,1,2...,11), then this is the regular sort.
